@@ -1,0 +1,40 @@
+timing in the 2050
+
+In the 2050, there are a number of clock trains.  Some of them run all the
+time, and some are gated and only run when various subsystems are active.
+
+The two main cycles time-wise are the machine cycle, which is 512 ns
+in length, and the main memory cycle, which is 2 microseconds (or 4
+machine cycles).  The machine cycle clock is gated into 2 main streams,
+the "cpu" clock, which only runs if the cpu is running, and the "io"
+clock, active if I/O is enabled.
+
+The cpu and main memory clocks are both divided into several sub-phases.
+The main memory clock is based on the requirements of the core memory
+used, and includes an R1, R2, WE, W2 phases.  Core memory reads are
+inherently destructive, therefore, there is only one kind of memory cycle,
+the read-modify-write cycle, and there is no "write enable" line going
+to memory for write cycles.  Addresses must be supplied at the start of
+R1, read data comes out at the end of R2, and write data goes in at WE.
+The machine cycle is also divided up into sub-phases, due to the timing
+considerations of local storage and ros.  Logic at the machine cycle
+level is partially pipelined, and some operations of the previous cycle
+complete after the next one starts in other parts.  So there
+are references in the 2050 documentation to "late reg set", "latch pulse"
+and so forth; these indicate sub-phases of the machine cycle.
+
+In this verilog implementation, my goal is to make the machine
+cycle the fundemental unit of time in the fpga.  That means
+everything must be resolved as either combinational logic,
+which resolves before a given time instant, or registered logic,
+which will resolve before the next time increment.
+
+Z22-2855-3_Field_Engr_Handbook_System360_Model_50_4th_Ed_196703.pdf
+page 20 [pdf page 21]
+good picture of the various timing signals in the CPU and
+their phase relationship to each other.
+
+Z22-2833-R_2050_Processing_Unit_Field_Engineering_Diagram_Manual_Jul66.pdf"
+page udc 004 "capacitor read only storage" [pdf page 10]
+upper left corner: other ros signals, rought only, no times indicated.
+lower-right corner: rosdr timing, ingate set, outgate set.

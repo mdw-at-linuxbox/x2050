@@ -1,0 +1,17 @@
+,*
+*.vcd
+*.pdf
+*.dot
+*.gtkw
+V*.*
+*.o
+*.vpi
+a.out
+*-
+testx2050ros
+x2050.json
+x2050ms_tb
+x2050br_tb
+x2050lad_tb
+x2050rmv_tb
+x2050com_tb

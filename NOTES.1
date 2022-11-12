@@ -1,0 +1,118 @@
+NOTES.1
+	(this file)
+data.bin
+	microcode in readmemb format.  using _ to separate ros fields differing
+	by mode, end comment includes sheet and cld.
+memdev50.v
+	wishbone ram from another project
+memdev64.v
+	wishbone ram adapted for 2050 logic and tooling
+read1.pl
+	early code to try to write out ros code, big bit endina.
+read2.pl
+	early code to try to write out ros code, little bit endian
+read3.pl
+	code to make data.bin from data.json
+read4.pl
+	reverse read3.pl and make data.json from it
+read5.pl
+	look at "extra" data in data.json - bits 90+ (they're always 0,
+	and there appears to be no pattern to which words have them.)
+read6.pl
+	read data.json & s360.67, and find pairs matching pattern w/ max diffs.
+read7.pl
+	read data.json & s360.67, find pairs or singls of matching patterns
+read8.pl
+	read data.bin, find pairs or singls of matching patterns in microcode
+read9.pl
+	dump out all the io or cpu instructions from the microcode.
+t2.json
+	test microcode standin for data.json; testing for read1.pl read2.pl
+test.json
+	more test microcode standin for data.json; testing for read1.pl read2.pl
+testb.h
+	verilator boilerplate
+testx2050ros.cc
+	test 2050 ros - cycle rom read and dump data, also check parity
+x2050.v
+	top of 2050 cpu module
+x2050.ys
+	yosys: simple read/parse test of all x2050 verilog code
+x2050add.v
+	2050 adder
+x2050amwp.v
+	2050 amwp bits from psw
+x2050bc.v
+	2050 byte counter primitive: used for mb lb md registers
+x2050br.v
+x2050br_tb.v
+	2050 break-in/break-out
+x2050bs.v
+	2050 mb, bs and wfn registers
+x2050cc.v
+	2050 cc and progmask from psw
+x2050com.v
+x2050com_tb.v
+	2050 common channel
+x2050cs.v
+	2050 byte selectable carry status
+x2050cy.v
+	2050 carry logic
+x2050ex.v
+	2050 exponent difference register
+x2050fet.v
+	2050 refetch stat
+x2050greg.v
+	2050 g register
+x2050hreg.v
+	2050 h register
+x2050iar.v
+	2050 iar
+x2050ilc.v
+	2050 ilc register from psw
+x2050jreg.v
+	2050 j register
+x2050lad.v
+x2050lad_tb.v
+	2050 left adder input
+x2050lmv.v
+	2050 left mover input
+x2050lreg.v
+	2050 l register
+x2050ls.v
+	2050 local storage
+x2050lsa.v
+	2050 addres bits for local storage
+x2050mpxb.v
+	2050 mpx bus
+x2050mpxc.v
+	2050 mpx control
+x2050mpxr.v
+	2050 mpx routine generator
+x2050mreg.v
+	2050 m register
+x2050ms.v
+	2050 main store : driver for wishbone memory
+x2050ms_tb.v
+	test bed for x2050 main store logic
+x2050mvr.v
+	2050 mover logic
+x2050rmv.v
+x2050rmv_tb.v
+	2050 right mover input
+x2050roar.v
+	2050 address for ros (microcode)
+x2050ros.v
+	2050 read only storage (holds microcode from test.bin)
+x2050rreg.v
+	2050 r register
+x2050sn.v
+	2050 sign status
+x2050st.v
+	2050 stat 0 - 7
+x2050sup.v
+	2050 supervisory logic; reset/load/psw restart
+x2050rad.v
+	2050 right adder input
+x2050treg.v
+	2050 t register

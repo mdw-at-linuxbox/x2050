@@ -1,0 +1,3 @@
+read -sv -I . x2050.v
+hierarchy -simcheck -nodefaults -libdir . -top x2050
+stat
